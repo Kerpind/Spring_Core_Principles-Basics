@@ -146,3 +146,33 @@ AppConfig를 주로 DI 컨테이너, 어샘블러, 오브젝트 팩토리 등으
 2. 싱글톤 보장을 작업해주는 것이다.
 3. 만약 @Configuration을 빼게 된다면 여러번 호출되게 된다.
 4. 싱글톤이 깨지게 된 것이다.
+
+# 19. 컴포넌트 스캔과 의존관계 자동 주입 시작하기
+
+1. 여러 코드에 @Bean을 작업하고 하는게 많이 어렵다.
+2. 그렇다보니 @Component 와 @Autowired 를 통해서 @Bean 작업을 대신 해줄 수 있다.
+3. 먼저 @ComponentScan 을 통해서 @Component 가 붙은 모든 클래스를 스프링 빈으로 등록한다.
+4. 스프링 빈의 이름을 클래스명을 사용하되 맨 앞글자는 소문자를 사용하여 생성한다.
+5. 그 상태에서 생성자에 @Autowired 를 지정하면 스프링 컨테이너가 자동으로 해당 스프링 빈을 찾아서 주입하게 된다.
+
+# 20. 탐색 위치와 기본 스캔 대상
+
+1. basePackages 를 통해서 탐색할 패키지의 시작 위치를 지정할 수 있다.
+2. basePackageClasses 를 통해서 지정한 클래스의 패키지를 탐색 시작 위치로도 지정할 수 있다.
+3. 디폴트로는 @ComponentScan 이 붙은 설정 정보 클래스의 패키지가 시작 위치가 된다.
+4. 프로젝트 시작 루트에 메인 설정 정보를 두는걸 권장한다.
+
+# 21. 필터
+
+1. 필터를 통해서 스프링 빈에 등록여부를 결정할 수 있다.
+2. includeFilters 와 excludeFilters 가 있다.
+
+# 22. 중복 등록과 충돌
+
+1. 자동 빈 등록 VS 자동 빈 등록 의 경우 Exception 이 발생한다.
+2. 수동 빈 등록 VS 자동 빈 등록 의 경우엔 수동 빈 등록이 우선권을 가져간다.
+3. 수동 빈 등록 시 로그가 표시가 된다.
+   (Overriding bean definition for bean 'memoryMemberRepository' with a different definition: replacing)
+4. 최근 스프링 부트에선 수동 빈과 자동 빈이 충돌이 나면 에러를 발생하도록 변경되었다.
+5. application.properties 에서 spring.main.allow-bean-definition-overriding=true 를 등록해서 가능하도록 설정 할 수도 있다.
+
