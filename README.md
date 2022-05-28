@@ -176,4 +176,4 @@ AppConfig를 주로 DI 컨테이너, 어샘블러, 오브젝트 팩토리 등으
 4. 최근 스프링 부트에선 수동 빈과 자동 빈이 충돌이 나면 에러를 발생하도록 변경되었다.
 5. application.properties 에서 spring.main.allow-bean-definition-overriding=true 를 등록해서 가능하도록 설정 할 수도 있다.
 
-# 23. 의존관계 주입 방법 
+# 23. 의존관계 주입 방법
