@@ -177,3 +177,4 @@ AppConfig를 주로 DI 컨테이너, 어샘블러, 오브젝트 팩토리 등으
 5. application.properties 에서 spring.main.allow-bean-definition-overriding=true 를 등록해서 가능하도록 설정 할 수도 있다.
 
 # 23. 의존관계 주입 방법
+
