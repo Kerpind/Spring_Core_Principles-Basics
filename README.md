@@ -260,5 +260,49 @@ AppConfig를 주로 DI 컨테이너, 어샘블러, 오브젝트 팩토리 등으
 5. 단점으론 외부 라이브러리에는 적용할 수 없다.
 
 # 33. 
+# 1. 어노테이션 기능 간단히 정리
 
+## 1.@Configuration
+
+Java Class 위에 선언해줌으로써 Spring 설정 정보와 관련된 파일이란 것을 명시하는 경우 사용한다.
+
+## 2.@Bean
+
+선언을 통해 파라미터로 넘어온 값을 스프링 컨테이너에 저장한다. 빈 이름은 해당 이름으로 저장이 된다. 이름을 변경하려면 선언문 옆에 이름 설정을 해준다.
+
+> 만약, @Configuration이 없이 @Bean을 명시하고 여러번 작성할 경우 그 수만큼 여러번 호출하게 된다. 싱글톤이 보장되지 않는다. \
+  @Configuration을 명시하였을 경우 @Bean을 통해서 생성되면 다시 호출되더라도 생성된 빈을 반환한다.
+
+## 3.@ComponentScan
+
+@Bean 명시는 등록이 필요한 모든 파일에 작업을 해야하는 번거로움이 있다. 그래서 다른 방법으로 @ComponentScan과 @Component를 사용하는 법이다.
+먼저 설정파일로 사용할 Java Class 위에 선언을 해준다.
+
+## 4.@Component
+
+그리고 @ComponentScan의 대상이 되도록 스피링 빈으로 등록할 Class 위에 @Component어노테이션을 선언해준다.
+@Service, @Repository, @Controller 등도 선언할 수 있다.
+
+## 5.@Autowired
+
+생성자에 @Autowired를 지정하면 Spring 컨테이너가 해당 스프링 빈을 찾아서 주입한다. 여러 필드를 주입받을 수 있다. 만약 생성자가 하나라면 생략해도 된다.
+
+## 6.@SpringBootApplication
+Spring Boot의 기본적인 설정을 선언해주는 어노테이션 입니다.
+
+@SpringBootConfiguration
+> @Configuration 과 동일한 기능. 구성을 자동으로 찾아주는 차이점만 있다.
+
+@ComponentScan
+> @Component 어노테이션을 찾아주는 어노테이션이다.
+
+@EnableAutoConfiguration
+> Spring Boot의 기본적인 auto configuration 리스트의 클래스들을 @Configuration 없이 빈에 등록될 수 있도록 해준다.
+
+## 7.@RequiredArgsConstructor
+
+final이 붙은 필드를 모아서 자동으로 생성자를 만들어주는 어노테이션이다.
+
+2. GET, POST, JSON 
+     저희 회사 소스에서 예시 1나씩만 캡쳐(Request 요청메시지 보이도록)
 
